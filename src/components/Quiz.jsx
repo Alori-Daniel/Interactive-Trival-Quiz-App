@@ -21,11 +21,11 @@ const Quiz = () => {
             [questionIndex]: answerIndex,
         }));
         // console.log("clickedindice",clickedIndices);
-        console.log(`Selected Answer for Question ${questionIndex + 1}:`, answer);
+        // console.log(`Selected Answer for Question ${questionIndex + 1}:`, answer);
     };
-    useEffect(() => {
-        console.log("selectedAnswers updated:", selectedAnswers);
-    }, [selectedAnswers]);
+    // useEffect(() => {
+    //     console.log("selectedAnswers updated:", selectedAnswers);
+    // }, [selectedAnswers]);
     
     // useEffect(() => {
     //     console.log("clickedIndices updated:", clickedIndices);
@@ -54,7 +54,7 @@ const Quiz = () => {
                     shuffledAnswers : shuffleArray([...datas.incorrect_answers, datas.correct_answer])
                 }))
                 setData(shuffledData);
-                console.log(shuffledData);
+                // console.log(shuffledData);
                 
             }
             else{
@@ -94,7 +94,7 @@ const Quiz = () => {
     };
 
   return (
-    <div style={{display:"flex", justifyContent:"center", paddingTop:"1rem", flexDirection:"column",alignItems:"center",width:"100%,"}}>
+    <div style={{display:"flex", justifyContent:"center", paddingTop:"1rem", flexDirection:"column",alignItems:"center",width:"100%", height:"100%"}}>
         <div className='ans-div' style={{maxWidth:"600px", padding:"0.3rem"}}>
             <h1 style={{textAlign:"center", color:"#4D5B9E"}}>Questions</h1>
         {
@@ -133,7 +133,6 @@ const Quiz = () => {
         }
         </div>
 
-        {/* <button onClick={()=>handleSubmit()}>Check Answer</button> */}
         {!reset ?(
         <div>
         <button onClick={()=>{handleSubmit()
@@ -143,7 +142,7 @@ const Quiz = () => {
         </div>
     ):(
         <div style={{textAlign:"center"}}>
-            {reset && <h1>Your Score: {score} / {data.length}</h1>}
+            {reset && <h3>Your Scoreed: {score} / {data.length}</h3>}
         <button onClick={()=>{
             setReset(false)
             handleRestart()

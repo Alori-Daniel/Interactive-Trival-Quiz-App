@@ -8,7 +8,7 @@ const Home = ({setCount}) => {
       <p style={{marginTop:"0", fontSize:"19px"}}>Click the button below to start Quiz</p>
       <button
       onClick={()=> {setCount(true)
-                    console.log("clicked")}
+                    }
       }
       
       >Start Quiz</button>
