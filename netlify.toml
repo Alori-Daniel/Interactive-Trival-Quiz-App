@@ -3,7 +3,7 @@
   publish = "dist"
 
 [context.production.environment]
-  NODE_VERSION = "14"
+  NODE_VERSION = "20.11.0"
 
 [[plugins]]
   package = "@netlify/plugin-lighthouse"
