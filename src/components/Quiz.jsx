@@ -23,9 +23,9 @@ const Quiz = () => {
         // console.log("clickedindice",clickedIndices);
         console.log(`Selected Answer for Question ${questionIndex + 1}:`, answer);
     };
-    // useEffect(() => {
-    //     console.log("selectedAnswers updated:", selectedAnswers);
-    // }, [selectedAnswers]);
+    useEffect(() => {
+        console.log("selectedAnswers updated:", selectedAnswers);
+    }, [selectedAnswers]);
     
     // useEffect(() => {
     //     console.log("clickedIndices updated:", clickedIndices);
@@ -41,11 +41,10 @@ const Quiz = () => {
         });
         setScore(newScore);
         setSubmitted(true);
-        // console.log(Object.values(selectedAnswers));
     }
     const getData = async () =>{
         try{
-            const response =await fetch("https://opentdb.com/api.php?amount=5&category=11&difficulty=easy&type=multiple")
+            const response =await fetch("https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple")
             if(response.ok){
                 const result = await response.json();
                 // console.log(result.results);
@@ -108,16 +107,17 @@ const Quiz = () => {
                             let answerClass = 'p-quiz';
                             if (submitted) {
                                 if (answer === datas.correct_answer) {
-                                    answerClass = 'correct'; // Apply green styling for correct answer
+                                    answerClass = 'correct'; 
                                 } else if (clickedIndices[questionIndex] === answerIndex) {
-                                    answerClass = 'incorrect'; // Apply red styling for incorrect answer
+                                    answerClass = 'incorrect'; 
                                 }
                             } else if (clickedIndices[questionIndex] === answerIndex) {
-                                answerClass = 'clicked'; // Apply normal clicked styling
+                                answerClass = 'clicked'; 
                             }
                         return(
-                                        <p key={answerIndex} className={answerClass}onClick={()=>{
+                                        <p key={answerIndex} className={answerClass} disabled={submitted} onClick={()=>{
                                             handleClick(answer, questionIndex, answerIndex)
+                                            
                                             // console.log("anserIndex", answerIndex);
                                             // console.log("questionIndex", questionIndex);
                                         }
